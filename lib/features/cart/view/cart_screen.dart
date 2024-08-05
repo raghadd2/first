@@ -56,39 +56,43 @@ class CartScreen extends StatelessWidget {
                               fontWeight: FontWeight.w600),
                         ),
                       ),
-                      Text(
-                        cartItem.price.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF00A991)),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Column(
                         children: [
-                          InkWell(
-                            onTap: () {
-                              ref.read(cartProvider).addToCart(product);
-                            },
-                            child: Icon(
-                              Icons.add_circle,
-                              color: Colors.green,
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  ref.read(cartProvider).addToCart(product);
+                                },
+                                child: Icon(
+                                  Icons.add_circle,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              Text(
+                                cartItem.quantity.toString(),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  cartprovider.removeFromCart(product);
+                                },
+                                child: Icon(
+                                  Icons.remove_circle,
+                                  color: Colors.grey[300],
+                                  size: 30,
+                                ),
+                              ),
+                            ],
                           ),
                           Text(
-                            cartItem.quantity.toString(),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              cartprovider.removeFromCart(product);
-                            },
-                            child: Icon(
-                              Icons.remove_circle,
-                              color: Colors.grey[300],
-                              size: 30,
-                            ),
+                            cartItem.price.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF00A991)),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 );
