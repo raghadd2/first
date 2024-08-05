@@ -28,6 +28,7 @@ class MyApp extends ConsumerWidget {
       title: AppConstance.appName,
       theme: LightTheme.init(context),
       darkTheme: DarkTheme.init(context),
+      debugShowCheckedModeBanner: false,
       themeMode: theme,
       localizationsDelegates: const [
         S.delegate,

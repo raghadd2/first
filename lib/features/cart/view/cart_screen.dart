@@ -9,95 +9,132 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Cart'),
+      ),
       body: Consumer(builder: (context, ref, child) {
-        final productProvider = ref.watch(productprovider);
-        final cartprovider = ref.watch(cartProvider);
+        final productProviderState = ref.watch(productprovider);
+        final cartProviderState = ref.watch(cartProvider);
+
         return Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 10,
           ),
           child: Visibility(
-            visible: cartprovider.cart.isNotEmpty,
+            visible: cartProviderState.cart.isNotEmpty,
             replacement: const Center(
               child: Text('Cart is empty'),
             ),
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(
-                height: 10,
-              ),
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                final cartItem = cartprovider.cart.values.toList()[index];
-                final product = productProvider.state.data[index];
+            child: Column(
+              children: [
+                if (cartProviderState.cart.isNotEmpty)
+                  Expanded(
+                    child: ListView.separated(
+                      separatorBuilder: (context, index) => const SizedBox(
+                        height: 10,
+                      ),
+                      itemBuilder: (context, index) {
+                        final cartItem =
+                            cartProviderState.cart.values.toList()[index];
+                        final product = productProviderState.state.data
+                            .firstWhere(
+                                (cartItem) => cartItem.id == cartItem.id);
 
-                return Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Image.network(
-                        cartItem.img,
-                        height: 100,
-                        width: 100,
-                      ),
-                      SizedBox(
-                        width: 100,
-                        child: Text(
-                          maxLines: 2,
-                          cartItem.name,
-                          style: TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                        return Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              InkWell(
-                                onTap: () {
-                                  ref.read(cartProvider).addToCart(product);
-                                },
-                                child: Icon(
-                                  Icons.add_circle,
-                                  color: Colors.green,
+                              Image.network(
+                                cartItem.img,
+                                height: 100,
+                                width: 100,
+                              ),
+                              SizedBox(
+                                width: 100,
+                                child: Text(
+                                  cartItem.name,
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
-                              Text(
-                                cartItem.quantity.toString(),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  cartprovider.removeFromCart(product);
-                                },
-                                child: Icon(
-                                  Icons.remove_circle,
-                                  color: Colors.grey[300],
-                                  size: 30,
-                                ),
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          ref
+                                              .read(cartProvider.notifier)
+                                              .addToCart(product);
+                                        },
+                                        child: Icon(
+                                          Icons.add_circle,
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                      Text(
+                                        cartItem.quantity.toString(),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          ref
+                                              .read(cartProvider.notifier)
+                                              .removeFromCart(product);
+                                        },
+                                        child: Icon(
+                                          Icons.remove_circle,
+                                          color: Colors.grey[300],
+                                          size: 30,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    "\$${cartItem.price}",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xFF00A991),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                          Text(
-                            cartItem.price.toString(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF00A991)),
-                          ),
-                        ],
-                      ),
-                    ],
+                        );
+                      },
+                      itemCount: cartProviderState.cart.length,
+                    ),
                   ),
-                );
-              },
-              itemCount: cartprovider.cart.length,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total',
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                    ),
+                    Text(
+                      "\$${cartProviderState.total}",
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         );

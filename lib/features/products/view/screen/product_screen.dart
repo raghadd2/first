@@ -45,7 +45,7 @@ class ProductScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        product.price.toString(),
+                        " ${product.price}\$",
                         style: const TextStyle(
                             overflow: TextOverflow.ellipsis,
                             fontSize: 12,
