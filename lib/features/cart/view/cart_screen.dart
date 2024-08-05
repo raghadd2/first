@@ -1,5 +1,7 @@
+import 'package:base_project/core/utils/app_extension.dart';
 import 'package:base_project/features/cart/controller/cart_provider.dart';
 import 'package:base_project/features/products/controller/product_provider.dart';
+import 'package:base_project/features/products/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,16 +33,11 @@ class CartScreen extends StatelessWidget {
                 if (cartProviderState.cart.isNotEmpty)
                   Expanded(
                     child: ListView.separated(
-                      separatorBuilder: (context, index) => const SizedBox(
-                        height: 10,
-                      ),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10),
                       itemBuilder: (context, index) {
                         final cartItem =
                             cartProviderState.cart.values.toList()[index];
-                        final product = productProviderState.state.data
-                            .firstWhere(
-                                (cartItem) => cartItem.id == cartItem.id);
-
                         return Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -76,7 +73,21 @@ class CartScreen extends StatelessWidget {
                                         onTap: () {
                                           ref
                                               .read(cartProvider.notifier)
-                                              .addToCart(product);
+                                              .addToCart(cartItem.id, ref);
+
+                                          
+                                          // old call method to make it work
+
+                                          // ref
+                                          //     .read(cartProvider)
+                                          //     .oldAdd(ProductModel(
+                                          //       id: cartItem.id,
+                                          //       title: cartItem.name,
+                                          //       price: cartItem.price,
+                                          //       description: cartItem.name,
+                                          //       category: "",
+                                          //       image: cartItem.img,
+                                          //     ));
                                         },
                                         child: Icon(
                                           Icons.add_circle,
@@ -90,7 +101,7 @@ class CartScreen extends StatelessWidget {
                                         onTap: () {
                                           ref
                                               .read(cartProvider.notifier)
-                                              .removeFromCart(product);
+                                              .removeFromCart(cartItem.id);
                                         },
                                         child: Icon(
                                           Icons.remove_circle,
@@ -127,7 +138,7 @@ class CartScreen extends StatelessWidget {
                           ),
                     ),
                     Text(
-                      "\$${cartProviderState.total}",
+                      "\$${cartProviderState.total.round()}",
                       style: const TextStyle(
                         fontSize: 20,
                       ),

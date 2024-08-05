@@ -2,6 +2,7 @@ import 'package:base_project/core/utils/enums/request_state.dart';
 import 'package:base_project/core/utils/public_methods.dart';
 import 'package:base_project/features/cart/controller/cart_provider.dart';
 import 'package:base_project/features/products/controller/product_provider.dart';
+import 'package:base_project/features/products/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,7 +29,8 @@ class ProductScreen extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: productProvider.state.data.length,
                 itemBuilder: (context, index) {
-                  final product = productProvider.state.data[index];
+                  final ProductModel product =
+                      productProvider.state.data[index];
                   return Column(
                     children: [
                       Image.network(
@@ -56,7 +58,7 @@ class ProductScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              ref.read(cartProvider).addToCart(product);
+                              ref.read(cartProvider).addToCart(product.id, ref);
                               PublicMethods.displaySnackBar(
                                   color: Colors.green,
                                   context: context,
@@ -73,7 +75,7 @@ class ProductScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              ref.read(cartProvider).removeFromCart(product);
+                              ref.read(cartProvider).removeFromCart(product.id);
                             },
                             child: Icon(
                               Icons.remove_circle,
