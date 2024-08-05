@@ -6,7 +6,7 @@ final dashboardProvider = NotifierProvider<DashboardProvider, int>(() {
 
 class DashboardProvider extends Notifier<int> {
   @override
-  int build() => 1;
+  int build() => 0;
 
   void changeIndex(int index) {
     state = index;

@@ -89,10 +89,9 @@ class HomeScreen extends StatelessWidget {
                     AppValidation.fieldRequired(context, value ?? ""),
               ),
               30.hGap,
-            
               ElevatedButton(
                 onPressed: () {
-                  context.pushNamed(NameRoutes.loginNameRoute);
+                  context.pushNamed(NameRoutes.productNameRoute);
                 },
                 child: const Text("Submit"),
               ),

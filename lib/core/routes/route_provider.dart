@@ -1,6 +1,7 @@
 import 'package:base_project/core/network/local/shared_pref.dart';
 import 'package:base_project/core/network/local/shared_pref_key.dart';
 import 'package:base_project/core/routes/route_name.dart';
+import 'package:base_project/features/cart/view/cart_screen.dart';
 import 'package:base_project/features/dashboard/view/screens/dashboard_screen.dart';
 import 'package:base_project/features/dummy/dummy_screen.dart';
 import 'package:base_project/features/home/view/screens/home_screen.dart';
@@ -39,13 +40,7 @@ final routeProvider = Provider<GoRouter>((ref) {
             return const NoTransitionPage(child: SplashScreen());
           },
         ),
-        GoRoute(
-          path: Routes.productRoute,
-          name: NameRoutes.productNameRoute,
-          pageBuilder: (context, state) {
-            return const NoTransitionPage(child: Product());
-          },
-        ),
+
         GoRoute(
           path: Routes.logintRoute,
           name: NameRoutes.loginNameRoute,
@@ -65,10 +60,11 @@ final routeProvider = Provider<GoRouter>((ref) {
               navigatorKey: _shellNavigateFirstPagr,
               routes: <RouteBase>[
                 GoRoute(
-                  path: Routes.defaultRoute,
-                  name: NameRoutes.defaultNameRoute,
-                  builder: (BuildContext context, GoRouterState state) =>
-                      HomeScreen(key: state.pageKey),
+                  path: Routes.productRoute,
+                  name: NameRoutes.productNameRoute,
+                  pageBuilder: (context, state) {
+                    return const NoTransitionPage(child: Product());
+                  },
                 ),
               ],
             ),
@@ -76,10 +72,11 @@ final routeProvider = Provider<GoRouter>((ref) {
               navigatorKey: _shellNavigatorNotificationSecondPage,
               routes: <RouteBase>[
                 GoRoute(
-                  path: Routes.dummyRoute,
-                  name: NameRoutes.dummyNameRoute,
-                  builder: (BuildContext context, GoRouterState state) =>
-                      DummyScreen(key: state.pageKey),
+                  path: Routes.cartRoute,
+                  name: NameRoutes.cartNameRoute,
+                  pageBuilder: (context, state) {
+                    return NoTransitionPage(child: Cart());
+                  },
                 ),
               ],
             ),

@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      context.goNamed(NameRoutes.defaultNameRoute);
+      context.goNamed(NameRoutes.productNameRoute);
     });
     super.initState();
   }

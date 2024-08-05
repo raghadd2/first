@@ -4,7 +4,7 @@ class Routes {
   static const String dummyRoute = '/dummy';
   static const String productRoute = '/product';
    static const String logintRoute = '/LoginScreen';
-
+   static const String cartRoute = '/cart';
   
 
 }
@@ -15,4 +15,5 @@ class NameRoutes {
   static const String dummyNameRoute = 'dummyNameRoute';
   static const String productNameRoute = 'productNameRoute';
   static const String loginNameRoute = 'loginNameRoute';
+  static const String cartNameRoute = 'cartNameRoute';
 }

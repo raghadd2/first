@@ -31,8 +31,9 @@ class NavBarWidget extends ConsumerWidget {
             icon: const Icon(Icons.search),
             onPressed: () {
               if (index == 1) return;
+              
               ref.watch(dashboardProvider.notifier).changeIndex(1);
-              context.goNamed(NameRoutes.dummyNameRoute);
+              context.goNamed(NameRoutes.cartNameRoute);
             },
           ),
         ],
