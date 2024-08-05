@@ -19,7 +19,10 @@ class CartProvider extends ChangeNotifier {
       cart[item.id]!.quantity++;
     } else {
       cart[item.id] =
-          CartItem(item.id.toString(), item.price.toInt(), 1, item.title);
+          CartItem(
+            item.image,
+            item.id.toString(),
+           item.price.toInt(), 1, item.title);
     }
     notifyListeners();
   }

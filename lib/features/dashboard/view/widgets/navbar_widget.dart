@@ -23,7 +23,7 @@ class NavBarWidget extends ConsumerWidget {
             onPressed: () {
               if (index == 0) return;
               ref.watch(dashboardProvider.notifier).changeIndex(0);
-              context.goNamed(NameRoutes.defaultNameRoute);
+              context.goNamed(NameRoutes.productNameRoute);
             },
           ),
           IconButton(
@@ -31,7 +31,7 @@ class NavBarWidget extends ConsumerWidget {
             icon: const Icon(Icons.search),
             onPressed: () {
               if (index == 1) return;
-              
+
               ref.watch(dashboardProvider.notifier).changeIndex(1);
               context.goNamed(NameRoutes.cartNameRoute);
             },

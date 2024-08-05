@@ -1,10 +1,7 @@
-import 'package:base_project/core/network/local/shared_pref.dart';
-import 'package:base_project/core/network/local/shared_pref_key.dart';
+
 import 'package:base_project/core/routes/route_name.dart';
 import 'package:base_project/features/cart/view/cart_screen.dart';
 import 'package:base_project/features/dashboard/view/screens/dashboard_screen.dart';
-import 'package:base_project/features/dummy/dummy_screen.dart';
-import 'package:base_project/features/home/view/screens/home_screen.dart';
 import 'package:base_project/features/login/view/login_screen.dart';
 import 'package:base_project/features/products/view/screen/product_screen.dart';
 import 'package:base_project/features/splash/view/screens/splash_screen.dart';
@@ -63,7 +60,7 @@ final routeProvider = Provider<GoRouter>((ref) {
                   path: Routes.productRoute,
                   name: NameRoutes.productNameRoute,
                   pageBuilder: (context, state) {
-                    return const NoTransitionPage(child: Product());
+                    return const NoTransitionPage(child: ProductScreen());
                   },
                 ),
               ],
@@ -75,7 +72,7 @@ final routeProvider = Provider<GoRouter>((ref) {
                   path: Routes.cartRoute,
                   name: NameRoutes.cartNameRoute,
                   pageBuilder: (context, state) {
-                    return NoTransitionPage(child: Cart());
+                    return NoTransitionPage(child: CartScreen());
                   },
                 ),
               ],

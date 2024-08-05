@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+
 class LoginModel extends Equatable{
   
   String password;

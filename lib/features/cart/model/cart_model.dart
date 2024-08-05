@@ -1,16 +1,22 @@
 
 class CartItem {
 
+
+  String img;
   String id;
   int price;
   int quantity;
   String name;
 
 
-  CartItem( this.id, this.price, this.quantity, this.name);
+
+  CartItem( 
+      this.img,
+    this.id, this.price, this.quantity, this.name);
 
   toJson() {
     return {
+      'img': img,
       
       'id': id,
       'price': price,
@@ -22,6 +28,7 @@ class CartItem {
 
   static CartItem fromJson(itemJson) {
     return CartItem(
+      itemJson['img'],
     
       itemJson['id'],
       itemJson['price'],
