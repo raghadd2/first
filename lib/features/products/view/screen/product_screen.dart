@@ -24,7 +24,7 @@ class ProductScreen extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             case RequestState.loaded:
-              return ListView.builder(
+              return GridView.builder(
                 shrinkWrap: true,
                 itemCount: productProvider.state.data.length,
                 itemBuilder: (context, index) {
@@ -33,13 +33,16 @@ class ProductScreen extends StatelessWidget {
                     children: [
                       Image.network(
                         product.image,
-                        width: 100,
-                        height: 100,
+                        width: 70,
+                        height: 70,
                       ),
                       Text(
+                        maxLines: 3,
                         product.title,
                         style: const TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w600),
+                            overflow: TextOverflow.ellipsis,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600),
                       ),
                       Text(
                         product.price.toString(),
@@ -83,6 +86,10 @@ class ProductScreen extends StatelessWidget {
                     ],
                   );
                 },
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 20,
+                    childAspectRatio: 0.8),
               );
             case RequestState.error:
               return Center(
