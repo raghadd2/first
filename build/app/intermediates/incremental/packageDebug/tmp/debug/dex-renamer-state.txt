@@ -1,4 +1,4 @@
-#Tue Aug 06 13:05:54 AST 2024
+#Tue Aug 06 16:31:12 AST 2024
 base.0=C\:\\Users\\GLOBAL-PC\\Desktop\\github\\first\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\GLOBAL-PC\\Desktop\\github\\first\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
 base.2=C\:\\Users\\GLOBAL-PC\\Desktop\\github\\first\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex

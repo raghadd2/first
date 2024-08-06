@@ -15,7 +15,7 @@ class CartScreen extends StatelessWidget {
         title: const Text('Cart'),
       ),
       body: Consumer(builder: (context, ref, child) {
-        // final productProviderState = ref.watch(productprovider);
+        final productProviderState = ref.watch(productprovider);
         final cartProviderState = ref.watch(cartProvider);
 
         return Padding(
@@ -39,9 +39,9 @@ class CartScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final cartItem =
                             cartProviderState.cart.values.toList()[index];
-                        final product = productProviderState.state.data
-                            .firstWhere(
-                                (cartItem) => cartItem.id == cartItem.id);
+                        // final product = productProviderState.state.data
+                        //     .firstWhere(
+                        //         (cartItem) => cartItem.id == cartItem.id);
 
                         return Container(
                           padding: const EdgeInsets.all(10),
@@ -78,7 +78,19 @@ class CartScreen extends StatelessWidget {
                                         onTap: () {
                                           ref
                                               .read(cartProvider.notifier)
-                                              .addToCart(product);
+                                              .addToCart(cartItem.id, ref);
+                                          // old call method to make it work
+
+                                          // ref
+                                          //     .read(cartProvider)
+                                          //     .oldAdd(ProductModel(
+                                          //       id: cartItem.id,
+                                          //       title: cartItem.name,
+                                          //       price: cartItem.price,
+                                          //       description: cartItem.name,
+                                          //       category: "",
+                                          //       image: cartItem.img,
+                                          //     ));
                                         },
                                         child: Icon(
                                           Icons.add_circle,
@@ -92,7 +104,7 @@ class CartScreen extends StatelessWidget {
                                         onTap: () {
                                           ref
                                               .read(cartProvider.notifier)
-                                              .removeFromCart(product);
+                                              .removeFromCart(cartItem.id);
                                         },
                                         child: Icon(
                                           Icons.remove_circle,

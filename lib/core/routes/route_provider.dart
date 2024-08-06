@@ -1,6 +1,6 @@
-
 import 'package:base_project/core/routes/route_name.dart';
 import 'package:base_project/features/cart/view/cart_screen.dart';
+import 'package:base_project/features/catgory/view/catgory_screen.dart';
 import 'package:base_project/features/dashboard/view/screens/dashboard_screen.dart';
 import 'package:base_project/features/login/view/login_screen.dart';
 import 'package:base_project/features/products/view/screen/product_screen.dart';
@@ -12,6 +12,8 @@ import 'package:go_router/go_router.dart';
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _shellNavigateFirstPagr = GlobalKey<NavigatorState>(debugLabel: 'name');
 final _shellNavigatorNotificationSecondPage =
+    GlobalKey<NavigatorState>(debugLabel: 'name');
+final _shellNavigatorNotificationthirdPage =
     GlobalKey<NavigatorState>(debugLabel: 'name');
 
 final routeProvider = Provider<GoRouter>((ref) {
@@ -73,6 +75,18 @@ final routeProvider = Provider<GoRouter>((ref) {
                   name: NameRoutes.cartNameRoute,
                   pageBuilder: (context, state) {
                     return NoTransitionPage(child: CartScreen());
+                  },
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              navigatorKey: _shellNavigatorNotificationthirdPage,
+              routes: <RouteBase>[
+                GoRoute(
+                  path: Routes.catgoryRoute,
+                  name: NameRoutes.catgoryNameRoute,
+                  pageBuilder: (context, state) {
+                    return NoTransitionPage(child: CatgoryScreen());
                   },
                 ),
               ],

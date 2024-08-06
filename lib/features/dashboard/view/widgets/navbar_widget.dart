@@ -28,12 +28,22 @@ class NavBarWidget extends ConsumerWidget {
           ),
           IconButton(
             padding: 30.allPad,
-            icon: const Icon(Icons.search),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () {
               if (index == 1) return;
 
               ref.watch(dashboardProvider.notifier).changeIndex(1);
               context.goNamed(NameRoutes.cartNameRoute);
+            },
+          ),
+          IconButton(
+            padding: 30.allPad,
+            icon: const Icon(Icons.calendar_view_month),
+            onPressed: () {
+              if (index == 2) return;
+
+              ref.watch(dashboardProvider.notifier).changeIndex(2);
+              context.goNamed(NameRoutes.catgoryNameRoute);
             },
           ),
         ],
