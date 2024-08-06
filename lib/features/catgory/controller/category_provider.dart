@@ -1,7 +1,7 @@
 import 'package:base_project/core/utils/enums/request_state.dart';
 import 'package:base_project/core/utils/general_state.dart';
 import 'package:base_project/features/catgory/repositry/category_repos.dart';
-import 'package:dartz/dartz.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,6 +22,30 @@ class CategoryProvider extends ChangeNotifier {
     state = GeneralState(requestState: RequestState.loading);
 
     final result = await _repo.getCategories();
+    result.fold((error) {
+      return state = GeneralState(
+        requestState: RequestState.error,
+        message: error,
+      );
+    }, (data) {
+      return state = GeneralState(
+        requestState: RequestState.loaded,
+        data: data,
+      );
+    });
+    notifyListeners();
+  }
+
+  CategoryProductsProvider(id) {
+    getCategoryProducts(id);
+  }
+
+  GeneralState state1 = GeneralState(requestState: RequestState.empty);
+  var repo = CategoryProductRepos();
+  getCategoryProducts(int? id) async {
+    state = GeneralState(requestState: RequestState.loading);
+
+    final result = await repo.getCategoryProducts(id);
     result.fold((error) {
       return state = GeneralState(
         requestState: RequestState.error,

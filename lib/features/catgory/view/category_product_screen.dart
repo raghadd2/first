@@ -1,16 +1,12 @@
-import 'package:base_project/core/routes/route_name.dart';
 import 'package:base_project/core/utils/enums/request_state.dart';
 import 'package:base_project/features/catgory/controller/category_provider.dart';
-import 'package:base_project/features/catgory/model/catgory_model.dart';
-import 'package:base_project/features/catgory/repositry/category_repos.dart';
-import 'package:base_project/features/catgory/view/category_product_screen.dart';
-import 'package:base_project/features/dashboard/view/screens/dashboard_screen.dart';
+import 'package:base_project/features/catgory/model/catgory_product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
-class CatgoryScreen extends StatelessWidget {
-  const CatgoryScreen({super.key});
+class CatProductScreen extends StatelessWidget {
+  const CatProductScreen({super.key, this.catgoryModel});
+  final CatgoryproductModel? catgoryModel;
 
   @override
   Widget build(BuildContext context) {
@@ -28,29 +24,17 @@ class CatgoryScreen extends StatelessWidget {
             case RequestState.loaded:
               return GridView.builder(
                 shrinkWrap: true,
-                itemCount: catgoryProvider.state.data.length,
+                itemCount: 2,
                 itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CatProductScreen(
-                            catgoryModel: catgoryProvider.state.data[index].id,
-                          ),
-                        ),
-                      );
-                    },
-                    child: Column(
-                      children: [
-                        Image.network(
-                          catgoryProvider.state.data[index].imageUrl,
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(catgoryProvider.state.data[index].name)
-                      ],
-                    ),
+                  return Column(
+                    children: [
+                      Image.network(
+                        catgoryModel!.productImages[index].imageUrl,
+                        height: 100,
+                        width: 100,
+                      ),
+                      Text(catgoryModel!.name),
+                    ],
                   );
                 },
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -73,8 +57,6 @@ class CatgoryScreen extends StatelessWidget {
               return Center(
                 child: Text('No Data'),
               );
-            default:
-              return const SizedBox();
           }
         }));
   }

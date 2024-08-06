@@ -1,5 +1,6 @@
 import 'package:base_project/core/routes/route_name.dart';
 import 'package:base_project/features/cart/view/cart_screen.dart';
+import 'package:base_project/features/catgory/view/category_product_screen.dart';
 import 'package:base_project/features/catgory/view/catgory_screen.dart';
 import 'package:base_project/features/dashboard/view/screens/dashboard_screen.dart';
 import 'package:base_project/features/login/view/login_screen.dart';
@@ -45,6 +46,14 @@ final routeProvider = Provider<GoRouter>((ref) {
           name: NameRoutes.loginNameRoute,
           pageBuilder: (context, state) {
             return NoTransitionPage(child: LoginScreen());
+          },
+        ),
+
+        GoRoute(
+          path: Routes.catgoryProductRoute,
+          name: NameRoutes.catgoryProductNameRoute,
+          pageBuilder: (context, state) {
+            return NoTransitionPage(child: CatProductScreen());
           },
         ),
 

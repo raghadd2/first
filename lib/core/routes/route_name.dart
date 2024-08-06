@@ -6,6 +6,8 @@ class Routes {
    static const String logintRoute = '/LoginScreen';
    static const String cartRoute = '/cart';
       static const String catgoryRoute = '/catgory';
+          static const String catgoryProductRoute = '/catgoryProduct';
+
   
 
 }
@@ -18,4 +20,5 @@ class NameRoutes {
   static const String loginNameRoute = 'loginNameRoute';
   static const String cartNameRoute = 'cartNameRoute';
   static const String catgoryNameRoute = 'catgoryNameRoute';
+  static const String catgoryProductNameRoute = 'catgoryProductNameRoute';
 }

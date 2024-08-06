@@ -1,16 +1,5 @@
-// To parse this JSON data, do
-//
-//     final catgoryproductModel = catgoryproductModelFromJson(jsonString);
-
-import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-
-CatgoryproductModel catgoryproductModelFromJson(String str) =>
-    CatgoryproductModel.fromJson(json.decode(str));
-
-String catgoryproductModelToJson(CatgoryproductModel data) =>
-    json.encode(data.toJson());
 
 class CatgoryproductModel extends Equatable {
   final String id;
