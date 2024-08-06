@@ -339,7 +339,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///C:/Users/GLOBAL-PC/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.14.0",
+      "rootUri": "file:///C:/Users/GLOBAL-PC/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.15.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -549,9 +549,9 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///C:/Users/GLOBAL-PC/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.7.1",
+      "rootUri": "file:///C:/Users/GLOBAL-PC/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.7.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "typed_data",
@@ -591,7 +591,7 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///C:/Users/GLOBAL-PC/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.2",
+      "rootUri": "file:///C:/Users/GLOBAL-PC/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.4",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -632,10 +632,10 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-08-04T18:15:25.178290Z",
+  "generated": "2024-08-06T10:18:49.756923Z",
   "generator": "pub",
-  "generatorVersion": "3.5.0-180.3.beta",
+  "generatorVersion": "3.5.0-323.2.beta",
   "flutterRoot": "file:///C:/src/flutter",
-  "flutterVersion": "3.23.0-0.1.pre",
+  "flutterVersion": "3.24.0-0.2.pre",
   "pubCache": "file:///C:/Users/GLOBAL-PC/AppData/Local/Pub/Cache"
 }

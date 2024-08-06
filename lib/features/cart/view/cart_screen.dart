@@ -13,7 +13,7 @@ class CartScreen extends StatelessWidget {
         title: const Text('Cart'),
       ),
       body: Consumer(builder: (context, ref, child) {
-        final productProviderState = ref.watch(productprovider);
+        // final productProviderState = ref.watch(productprovider);
         final cartProviderState = ref.watch(cartProvider);
 
         return Padding(
