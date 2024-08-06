@@ -53,7 +53,8 @@ final routeProvider = Provider<GoRouter>((ref) {
           path: Routes.catgoryProductRoute,
           name: NameRoutes.catgoryProductNameRoute,
           pageBuilder: (context, state) {
-            return NoTransitionPage(child: CatProductScreen());
+            final id = state.pathParameters['id'].toString();
+            return NoTransitionPage(child: CatProductScreen(id: id));
           },
         ),
 

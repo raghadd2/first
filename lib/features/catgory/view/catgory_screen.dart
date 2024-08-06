@@ -1,6 +1,7 @@
 import 'package:base_project/core/routes/route_name.dart';
 import 'package:base_project/core/utils/enums/request_state.dart';
 import 'package:base_project/features/catgory/controller/category_provider.dart';
+import 'package:base_project/features/catgory/controller/subcat.dart';
 import 'package:base_project/features/catgory/model/catgory_model.dart';
 import 'package:base_project/features/catgory/repositry/category_repos.dart';
 import 'package:base_project/features/catgory/view/category_product_screen.dart';
@@ -32,13 +33,9 @@ class CatgoryScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CatProductScreen(
-                            catgoryModel: catgoryProvider.state.data[index].id,
-                          ),
-                        ),
+                      context.pushNamed(
+                        Routes.catgoryProductRoute,
+                        queryParameters: catgoryProvider.state.data[index].id,
                       );
                     },
                     child: Column(

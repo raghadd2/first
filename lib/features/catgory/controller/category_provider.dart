@@ -35,28 +35,4 @@ class CategoryProvider extends ChangeNotifier {
     });
     notifyListeners();
   }
-
-  CategoryProductsProvider(id) {
-    getCategoryProducts(id);
-  }
-
-  GeneralState state1 = GeneralState(requestState: RequestState.empty);
-  var repo = CategoryProductRepos();
-  getCategoryProducts(int? id) async {
-    state = GeneralState(requestState: RequestState.loading);
-
-    final result = await repo.getCategoryProducts(id);
-    result.fold((error) {
-      return state = GeneralState(
-        requestState: RequestState.error,
-        message: error,
-      );
-    }, (data) {
-      return state = GeneralState(
-        requestState: RequestState.loaded,
-        data: data,
-      );
-    });
-    notifyListeners();
-  }
 }

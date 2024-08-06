@@ -10,7 +10,12 @@ class CategoryRepos {
     try {
       final dio = DioClient();
 
-      final response = await dio.get(EndPoints.category).catchError((error) {
+      final response = await dio
+          .get(
+        EndPoints.category,
+        // queryParameters: "ParentId"
+      )
+          .catchError((error) {
         if (error.response != null && error.response.statusCode != 500) {
           throw error.response.data['message'];
         } else {
@@ -18,13 +23,9 @@ class CategoryRepos {
         }
       });
 
-      final data = response.data;
-      List<dynamic> categoryList;
-
-      categoryList = data['result'];
-
-      final success =
-          categoryList.map((e) => CatgoryModel.fromJson(e)).toList();
+      final success = (response.data['result'] as List)
+          .map((e) => CatgoryModel.fromJson(e))
+          .toList();
 
       return Right(success);
     } catch (e) {
@@ -34,13 +35,13 @@ class CategoryRepos {
 }
 
 class CategoryProductRepos {
-  Future<Either<String, List<CatgoryproductModel>>>
-      getCategoryProducts(id) async {
+  Future<Either<String, List<CatgoryproductModel>>> getCategoryProducts(
+      id) async {
     try {
       final dio = DioClient();
 
-      final response =
-          await dio.get(EndPoints.categoryProducts).catchError((error) {
+      final response = await dio.get(EndPoints.categoryProducts,
+          queryParameters: {"ParentId": id}).catchError((error) {
         if (error.response != null && error.response.statusCode != 500) {
           throw error.response.data['message'];
         } else {

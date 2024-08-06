@@ -6,7 +6,7 @@ class Routes {
    static const String logintRoute = '/LoginScreen';
    static const String cartRoute = '/cart';
       static const String catgoryRoute = '/catgory';
-          static const String catgoryProductRoute = '/catgoryProduct';
+          static const String catgoryProductRoute = '/catgoryProduct/:id';
 
   
 

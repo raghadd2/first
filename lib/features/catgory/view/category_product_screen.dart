@@ -1,12 +1,16 @@
 import 'package:base_project/core/utils/enums/request_state.dart';
 import 'package:base_project/features/catgory/controller/category_provider.dart';
+import 'package:base_project/features/catgory/controller/subcat.dart';
 import 'package:base_project/features/catgory/model/catgory_product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CatProductScreen extends StatelessWidget {
-  const CatProductScreen({super.key, this.catgoryModel});
-  final CatgoryproductModel? catgoryModel;
+  const CatProductScreen({
+    super.key,
+    this.id,
+  });
+  final String? id;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class CatProductScreen extends StatelessWidget {
           title: const Text('Catgory'),
         ),
         body: Consumer(builder: (context, ref, child) {
-          final catgoryProvider = ref.watch(categoryProvider);
+          final catgoryProvider = ref.watch(sucategoryProvider(id));
           switch (catgoryProvider.state.requestState) {
             case RequestState.loading:
               return const Center(
@@ -24,16 +28,11 @@ class CatProductScreen extends StatelessWidget {
             case RequestState.loaded:
               return GridView.builder(
                 shrinkWrap: true,
-                itemCount: 2,
+                itemCount: catgoryProvider.state.data.length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      Image.network(
-                        catgoryModel!.productImages[index].imageUrl,
-                        height: 100,
-                        width: 100,
-                      ),
-                      Text(catgoryModel!.name),
+                      Text(id!),
                     ],
                   );
                 },
