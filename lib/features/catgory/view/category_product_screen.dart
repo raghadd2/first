@@ -19,7 +19,7 @@ class CatProductScreen extends StatelessWidget {
           title: const Text('Catgory'),
         ),
         body: Consumer(builder: (context, ref, child) {
-          final catgoryProvider = ref.watch(sucategoryProvider(id));
+          final catgoryProvider = ref.watch(sucategoryProvider(id!));
           switch (catgoryProvider.state.requestState) {
             case RequestState.loading:
               return const Center(
@@ -30,9 +30,11 @@ class CatProductScreen extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: catgoryProvider.state.data.length,
                 itemBuilder: (context, index) {
+                  final CatgoryproductModel item =
+                      catgoryProvider.state.data[index];
                   return Column(
                     children: [
-                      Text(id!),
+                      Text(item.name),
                     ],
                   );
                 },

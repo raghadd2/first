@@ -49,13 +49,9 @@ class CategoryProductRepos {
         }
       });
 
-      final data = response.data;
-      List<dynamic> categoryList;
-
-      categoryList = data['result'];
-
-      final success =
-          categoryList.map((e) => CatgoryproductModel.fromJson(e)).toList();
+      final success = (response.data['result'] as List)
+          .map((e) => CatgoryproductModel.fromJson(e))
+          .toList();
 
       return Right(success);
     } catch (e) {

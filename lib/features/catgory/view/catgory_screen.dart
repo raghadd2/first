@@ -31,11 +31,12 @@ class CatgoryScreen extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: catgoryProvider.state.data.length,
                 itemBuilder: (context, index) {
+                  final CatgoryModel item = catgoryProvider.state.data[index];
                   return InkWell(
                     onTap: () {
                       context.pushNamed(
-                        Routes.catgoryProductRoute,
-                        queryParameters: catgoryProvider.state.data[index].id,
+                        NameRoutes.catgoryProductNameRoute,
+                        pathParameters: {"id": item.id.toString()},
                       );
                     },
                     child: Column(
