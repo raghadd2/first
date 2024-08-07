@@ -3,13 +3,11 @@ class Routes {
   static const String splashRoute = '/splash';
   static const String dummyRoute = '/dummy';
   static const String productRoute = '/product';
-   static const String logintRoute = '/LoginScreen';
-   static const String cartRoute = '/cart';
-      static const String catgoryRoute = '/catgory';
-          static const String catgoryProductRoute = '/catgoryProduct/:id';
-
-  
-
+  static const String logintRoute = '/LoginScreen';
+  static const String cartRoute = '/cart';
+  static const String catgoryRoute = '/catgory';
+  static const String catgoryProductRoute = '/catgoryProduct/:id';
+  static const String otpRoute = '/otpScreen';
 }
 
 class NameRoutes {
@@ -21,4 +19,5 @@ class NameRoutes {
   static const String cartNameRoute = 'cartNameRoute';
   static const String catgoryNameRoute = 'catgoryNameRoute';
   static const String catgoryProductNameRoute = 'catgoryProductNameRoute';
+  static const String otpNameRoute = 'otpNameRoute';
 }

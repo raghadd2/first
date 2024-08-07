@@ -1,9 +1,10 @@
 import 'package:base_project/core/routes/route_name.dart';
+import 'package:base_project/features/auth/view/otp_screen/otp_screen.dart';
+import 'package:base_project/features/auth/view/signin_screen/signin_screen.dart';
 import 'package:base_project/features/cart/view/cart_screen.dart';
 import 'package:base_project/features/catgory/view/category_product_screen.dart';
 import 'package:base_project/features/catgory/view/catgory_screen.dart';
 import 'package:base_project/features/dashboard/view/screens/dashboard_screen.dart';
-import 'package:base_project/features/login/view/login_screen.dart';
 import 'package:base_project/features/products/view/screen/product_screen.dart';
 import 'package:base_project/features/splash/view/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,17 @@ final routeProvider = Provider<GoRouter>((ref) {
           pageBuilder: (context, state) {
             final id = state.pathParameters['id'].toString();
             return NoTransitionPage(child: CatProductScreen(id: id));
+          },
+        ),
+
+        GoRoute(
+          path: Routes.otpRoute,
+          name: NameRoutes.otpNameRoute,
+          pageBuilder: (context, state) {
+            return NoTransitionPage(
+                child: OtpScreen(
+            
+            ));
           },
         ),
 
