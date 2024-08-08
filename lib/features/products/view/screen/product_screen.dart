@@ -1,3 +1,5 @@
+import 'package:base_project/core/routes/route_name.dart';
+import 'package:base_project/core/routes/route_provider.dart';
 import 'package:base_project/core/utils/enums/request_state.dart';
 import 'package:base_project/core/utils/public_methods.dart';
 import 'package:base_project/features/cart/controller/cart_provider.dart';
@@ -5,6 +7,7 @@ import 'package:base_project/features/products/controller/product_provider.dart'
 import 'package:base_project/features/products/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
@@ -14,6 +17,15 @@ class ProductScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.goNamed(NameRoutes.getuserNameRoute);
+            },
+            icon: const Icon(Icons.account_circle),
+            iconSize: 50,
+          )
+        ],
       ),
       body: Consumer(
         builder: (context, ref, child) {

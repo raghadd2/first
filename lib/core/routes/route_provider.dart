@@ -7,6 +7,8 @@ import 'package:base_project/features/catgory/view/catgory_screen.dart';
 import 'package:base_project/features/dashboard/view/screens/dashboard_screen.dart';
 import 'package:base_project/features/products/view/screen/product_screen.dart';
 import 'package:base_project/features/splash/view/screens/splash_screen.dart';
+import 'package:base_project/features/user_informaion/view/getuser_screen.dart';
+import 'package:base_project/features/user_informaion/view/updateuser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -63,10 +65,22 @@ final routeProvider = Provider<GoRouter>((ref) {
           path: Routes.otpRoute,
           name: NameRoutes.otpNameRoute,
           pageBuilder: (context, state) {
-            return NoTransitionPage(
-                child: OtpScreen(
-            
-            ));
+            return NoTransitionPage(child: OtpScreen());
+          },
+        ),
+
+        GoRoute(
+          path: Routes.getuserRoute,
+          name: NameRoutes.getuserNameRoute,
+          pageBuilder: (context, state) {
+            return NoTransitionPage(child: GetUserScreen());
+          },
+        ),
+        GoRoute(
+          path: Routes.updateuserRoute,
+          name: NameRoutes.updateuserNameRoute,
+          pageBuilder: (context, state) {
+            return NoTransitionPage(child: UpdateUser());
           },
         ),
 

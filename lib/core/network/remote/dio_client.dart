@@ -1,3 +1,5 @@
+import 'package:base_project/core/network/local/shared_pref.dart';
+import 'package:base_project/core/network/local/shared_pref_key.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -15,6 +17,19 @@ class DioClient {
         error: true,
         compact: true,
         maxWidth: 90));
+
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          String token = SharedPref.getData(SharedPrefKeys.token) ?? "";
+          options.headers['Authorization'] = 'Bearer $token';
+          options.headers['Accept'] = '*/*';
+          options.headers['Content-Type'] = 'application/json';
+          return handler.next(options); 
+        },
+      ),
+    );
+
     dio.options.headers['Accept'] = '*/*';
   }
 

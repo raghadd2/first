@@ -7,9 +7,7 @@ class ProductRepo {
   Future<Either<String, List<ProductModel>>> getProducts() async {
     try {
       final dio = DioClient();
-      final response = await dio.get(EndPoints.products).
-      
-  catchError((error) {
+      final response = await dio.get(EndPoints.products).catchError((error) {
         if (error.response != null && error.response.statusCode != 500) {
           throw error.response.data['msg'];
         } else {
@@ -17,9 +15,8 @@ class ProductRepo {
         }
       });
 
-      final success = (response.data as List)
-          .map((e) => ProductModel.fromJson(e))
-          .toList();
+      final success =
+          (response.data as List).map((e) => ProductModel.fromJson(e)).toList();
 
       return Right(success);
     } catch (e) {

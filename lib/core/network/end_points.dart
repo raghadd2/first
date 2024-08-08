@@ -8,6 +8,10 @@ class EndPoints {
   static String category = "https://365-api.tatweer-dev.com/api/Category/Gets";
   static String categoryProducts =
       "https://365-api.tatweer-dev.com/api/Product/Gets";
-  static const String checkotp =
+  static String checkotp =
       "https://demo-appartment-api.tatweer-dev.com/api/clients/check_otp";
+  static String getProfile =
+      'https://demo-appartment-api.tatweer-dev.com/api/clients/profile';
+  static String updateProfile =
+      "https://demo-appartment-api.tatweer-dev.com/api/clients/profile/update";
 }

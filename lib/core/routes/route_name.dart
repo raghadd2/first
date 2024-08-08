@@ -8,6 +8,8 @@ class Routes {
   static const String catgoryRoute = '/catgory';
   static const String catgoryProductRoute = '/catgoryProduct/:id';
   static const String otpRoute = '/otpScreen';
+  static const String getuserRoute = '/getuser';
+  static const String updateuserRoute = '/updateuser';
 }
 
 class NameRoutes {
@@ -20,4 +22,7 @@ class NameRoutes {
   static const String catgoryNameRoute = 'catgoryNameRoute';
   static const String catgoryProductNameRoute = 'catgoryProductNameRoute';
   static const String otpNameRoute = 'otpNameRoute';
+  static const String getuserNameRoute = 'getuserNameRoute';
+   static const String updateuserNameRoute = 'updateuserNameRoute';
+
 }
