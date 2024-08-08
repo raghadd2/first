@@ -86,4 +86,6 @@ class GetUserModel extends Equatable {
         updatedAt,
         verifiedAt,
       ];
+
+
 }

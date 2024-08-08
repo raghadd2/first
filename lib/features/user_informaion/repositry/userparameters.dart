@@ -1,8 +1,7 @@
-
 import 'package:equatable/equatable.dart';
 
 class Userparameters extends Equatable {
-   final String name;
+  final String name;
   final String homephone;
   final String workphone;
   final String nationality;
@@ -10,7 +9,6 @@ class Userparameters extends Equatable {
   final String job;
   final String birthday;
   final String email;
-  
 
   Userparameters({
     required this.name,
@@ -25,29 +23,26 @@ class Userparameters extends Equatable {
 
   tojsin() {
     return {
-       "name": name,
+      "name": name,
       "home_phone": homephone,
       "work_phone": workphone,
-      "nationality" :nationality,
+      "nationality": nationality,
       "marital_status": maritalstatus,
       "job": job,
       "birthday": birthday,
       "email": email,
-
     };
   }
 
   @override
   List<Object?> get props => [
-    name,
-    homephone,
-    workphone,
-      nationality,
- maritalstatus,
-   job,
-   birthday,
- email
-
-
-  ];
+        name,
+        homephone,
+        workphone,
+        nationality,
+        maritalstatus,
+        job,
+        birthday,
+        email
+      ];
 }

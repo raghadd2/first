@@ -32,7 +32,7 @@ class UserRepositroy {
       final response = await dio
           .put(
         EndPoints.updateProfile,
-        data: userparameters,
+        data: userparameters.tojsin(),
       )
           .catchError((error) {
         if (error.response != null && error.response.statusCode != 500) {

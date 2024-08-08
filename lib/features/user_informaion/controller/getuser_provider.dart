@@ -21,7 +21,6 @@ class User extends ChangeNotifier {
 
   GeneralState state = GeneralState(requestState: RequestState.empty);
   final _repo = UserRepositroy();
-  final update = UserRepositroy();
   var genstate = GeneralState(requestState: RequestState.empty);
   var genstate1 = GeneralState(requestState: RequestState.empty);
   var key = GlobalKey<FormState>();
@@ -39,6 +38,7 @@ class User extends ChangeNotifier {
     notifyListeners();
 
     final result = await _repo.getUser();
+
     result.fold((error) {
       state = GeneralState(
         requestState: RequestState.error,
@@ -54,9 +54,7 @@ class User extends ChangeNotifier {
   }
 
   updateuser(BuildContext context) async {
-    if (!key.currentState!.validate()) return;
-    changeState(RequestState.loading);
-    final result = await update.updateUser(
+    final result = await _repo.updateUser(
       Userparameters(
           name: nameController.text,
           homephone: homephoneController.text,
@@ -67,13 +65,13 @@ class User extends ChangeNotifier {
           birthday: birthdayController.text,
           email: emailController.text),
     );
+    print("result $result");
     result.fold((error) {
       PublicMethods.displaySnackBar(context: context, message: error);
       genstate1 =
           GeneralState(requestState: RequestState.error, message: error);
     }, (data) {
       genstate1 = GeneralState(requestState: RequestState.loaded);
-      context.pushNamed(NameRoutes.otpNameRoute);
     });
     notifyListeners();
   }
@@ -86,6 +84,6 @@ class User extends ChangeNotifier {
   Future<void> signOut(BuildContext context) async {
     await SharedPref.removeData(SharedPrefKeys.token);
 
-    context.pushNamed(NameRoutes.loginNameRoute);
+    context.goNamed(NameRoutes.loginNameRoute);
   }
 }
