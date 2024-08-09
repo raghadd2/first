@@ -6,8 +6,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
-class UpdateUser extends StatelessWidget {
+class UpdateUser extends ConsumerStatefulWidget {
   const UpdateUser({super.key});
+
+  @override
+  ConsumerState<UpdateUser> createState() => _UpdateUserState();
+}
+
+class _UpdateUserState extends ConsumerState<UpdateUser> {
+  @override
+  void initState() {
+    super.initState();
+    final userProvider = ref.read(getUserProvider);
+    final user = userProvider.state.data;
+    ref.read(updateuserProvider).nameController.text = user.name;
+    ref.read(updateuserProvider).emailController.text = user.email;
+    ref.read(updateuserProvider).homephoneController.text = user.homePhone;
+    ref.read(updateuserProvider).workphoneController.text = user.workPhone;
+    ref.read(updateuserProvider).jobController.text = user.job;
+    ref.read(updateuserProvider).nationalityController.text = user.nationality;
+    ref.read(updateuserProvider).maritalstatusController.text =
+        user.maritalStatus;
+    ref.read(updateuserProvider).birthdayController.text = user.birthday;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +43,7 @@ class UpdateUser extends StatelessWidget {
             builder: ((context, ref, child) {
               final provider = ref.watch(updateuserProvider);
               return Column(children: [
-                const SizedBox(height: 16.0),
-                16.hGap,
                 TextFormField(
-                  
                   textInputAction: TextInputAction.done,
                   validator: (value) =>
                       AppValidation.validateName(context, value ?? ""),

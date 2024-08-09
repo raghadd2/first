@@ -25,7 +25,7 @@ class DioClient {
           options.headers['Authorization'] = 'Bearer $token';
           options.headers['Accept'] = '*/*';
           options.headers['Content-Type'] = 'application/json';
-          return handler.next(options); 
+          return handler.next(options);
         },
       ),
     );

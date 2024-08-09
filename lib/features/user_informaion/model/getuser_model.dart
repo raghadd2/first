@@ -15,6 +15,8 @@ class GetUserModel extends Equatable {
   final DateTime createdAt;
   final DateTime updatedAt;
   final DateTime? verifiedAt;
+  final String email;
+  final String? birthday;
 
   GetUserModel({
     required this.id,
@@ -31,6 +33,8 @@ class GetUserModel extends Equatable {
     required this.createdAt,
     required this.updatedAt,
     this.verifiedAt,
+    required this.email,
+    this.birthday,
   });
 
   factory GetUserModel.fromJson(Map<String, dynamic> json) => GetUserModel(
@@ -50,6 +54,8 @@ class GetUserModel extends Equatable {
         verifiedAt: json["verified_at"] != null
             ? DateTime.parse(json["verified_at"])
             : null,
+        email: json["email"] ?? '',
+        birthday: json["birthday"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -67,6 +73,8 @@ class GetUserModel extends Equatable {
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "verified_at": verifiedAt?.toIso8601String(),
+        'email': email,
+        'birthday': birthday,
       };
 
   @override
@@ -85,7 +93,7 @@ class GetUserModel extends Equatable {
         createdAt,
         updatedAt,
         verifiedAt,
+        email,
+        birthday,
       ];
-
-
 }

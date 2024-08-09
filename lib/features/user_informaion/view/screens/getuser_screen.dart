@@ -88,6 +88,7 @@ class GetUserScreen extends StatelessWidget {
                 );
               case RequestState.error:
                 print(userProvider.state.message);
+
                 return Center(
                   child: Text(userProvider.state.message),
                 );
